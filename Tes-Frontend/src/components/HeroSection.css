@@ -1,0 +1,53 @@
+/* HeroSection.css */
+.hero-section {
+  text-align: center;
+  background-image: url('/assets/banner.jpg'); /* Banner image should have colorful gradients */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 20px; /* Added more padding for a fuller feel */
+}
+
+.hero-section h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  background: rgba(
+    0,
+    74,
+    173,
+    0.7
+  ); /* Transparent background to make the search box stand out */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.search-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-options select {
+  padding: 10px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-options button {
+  padding: 10px 20px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.search-options button:hover {
+  background-color: #ff4d00;
+}
