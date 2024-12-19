@@ -1,0 +1,50 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Mendapatkan input dari formulir
+    $hours_worked = $_POST['hours_worked'];
+    $hourly_rate = $_POST['hourly_rate'];
+
+    // Validasi input
+    if (!is_numeric($hours_worked) || $hours_worked < 0) {
+        echo "Input jam kerja harus berupa angka positif.<br>";
+    } elseif (!is_numeric($hourly_rate) || $hourly_rate < 0) {
+        echo "Input tarif per jam harus berupa angka positif.<br>";
+    } else {
+        // Menghitung gaji
+        $hours_worked = (float)$hours_worked;
+        $hourly_rate = (float)$hourly_rate;
+        $standard_hours = 40;
+        $overtime_multiplier = 1.5;
+
+        if ($hours_worked > $standard_hours) {
+            $overtime_hours = $hours_worked - $standard_hours;
+            $regular_pay = $standard_hours * $hourly_rate;
+            $overtime_pay = $overtime_hours * $hourly_rate * $overtime_multiplier;
+            $total_salary = $regular_pay + $overtime_pay;
+        } else {
+            $total_salary = $hours_worked * $hourly_rate;
+        }
+
+        echo "Gaji total adalah: Rp" . number_format($total_salary, 2, ',', '.') . "<br>";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hitung Gaji</title>
+</head>
+<body>
+    <form method="POST">
+        <label for="hours_worked">Masukkan jumlah jam kerja:</label>
+        <input type="text" id="hours_worked" name="hours_worked" required><br><br>
+
+        <label for="hourly_rate">Masukkan tarif per jam:</label>
+        <input type="text" id="hourly_rate" name="hourly_rate" required><br><br>
+
+        <button type="submit">Hitung Gaji</button>
+    </form>
+</body>
+</html>
